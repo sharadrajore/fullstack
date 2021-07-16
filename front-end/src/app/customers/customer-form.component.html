@@ -1,0 +1,44 @@
+<div>
+  <form #custFormVar="ngForm" 
+  (ngSubmit)="saveForm(custFormVar)">
+    <div class="row form-group">
+    <label for="firstName" class="col-md-1">FirstName:</label>
+    <input type="text" id="firstName" name="firstName"
+    #firstNameVar="ngModel" [(ngModel)]="customer.firstName"
+     class="form-control col-md-5"
+     required  placeholder="FirstName(required)" minlength="3"/>
+     <span *ngIf="firstNameVar.invalid && firstNameVar.touched">
+       INVALID DATA
+      </span>
+    </div>
+
+    <div class="row form-group">
+        <label for="lastName" class="col-md-1">LastName:</label>
+        <input type="text" id="lastName" name="lastName"
+        #lastNameVar="ngModel" [(ngModel)]="customer.lastName"
+         class="form-control col-md-5"
+         required  placeholder="lastName(required)"
+          maxlength="20"/>
+        </div>
+        <div class="row form-group">
+            <label for="email" class="col-md-1">EmailId:</label>
+            <input type="email" id="email" name="email"
+            #emailVar="ngModel" [(ngModel)]="customer.email"
+             class="form-control col-md-5"
+               placeholder="abc@xyz"/>
+            </div>
+            <div class="form-group">
+              <button type="submit" 
+              class="btn btn-primary"
+              [disabled]="custFormVar.invalid"
+              >              
+                Save
+              </button>
+            </div>
+
+  </form>
+</div>
+<br>Dirty :{{custFormVar.dirty}}
+<br>Touched :{{custFormVar.touched}}
+<br>Valid :{{custFormVar.valid}}
+<br>Value :{{custFormVar.value|json}}

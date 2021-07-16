@@ -1,0 +1,24 @@
+.displayside{
+    position: absolute;
+    border: 2px solid grey;
+    top:100px;
+    left:10px;
+    height: 400px;
+   
+}
+.displayside ul{
+    list-style-type: none;
+    padding-left:-10px;
+    margin-left:-30px;
+   
+   
+}
+.displayside ul li{
+    padding-bottom: 30px;
+}
+.displayside ul a{
+    text-decoration: none;
+    color:grey;
+    font-weight:bolder;
+    
+}

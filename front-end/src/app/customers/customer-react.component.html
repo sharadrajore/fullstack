@@ -1,0 +1,60 @@
+<div>
+    <form [formGroup]="customerForm" (ngSubmit)="saveForm()">    
+      <div class="row form-group">
+      <label for="firstName" class="col-md-1">FirstName:</label>
+      <input type="text" id="firstName"       
+       class="form-control col-md-5"      
+        placeholder="FirstName(required)" 
+        formControlName="firstName"/>
+       <span 
+       *ngIf="(customerForm.get('firstName').touched||
+       customerForm.get('firstName').dirty)
+       && customerForm.get('firstName').errors">
+      <span *ngIf="customerForm.get('firstName').errors.required">
+          First Name is Mandatory
+      </span> 
+      <span *ngIf="customerForm.get('firstName').errors.minlength">
+          Name should contain at least 3 characters
+      </span> 
+       </span>
+         
+     
+      </div>
+  
+      <div class="row form-group">
+          <label for="lastName" class="col-md-1">LastName:</label>
+          <input type="text" id="lastName"          
+           class="form-control col-md-5"
+             placeholder="lastName(required)"
+             formControlName="lastName"/>
+          </div>
+          <div class="row form-group">
+              <label for="email" class="col-md-1">EmailId:</label>
+              <input type="email" id="email"          
+               class="form-control col-md-5"
+                 placeholder="abc@xyz"
+                 formControlName="email"/>
+              </div>
+              <div class="form-group">
+                <button type="submit" 
+                class="btn btn-primary"                
+               [disabled]="!customerForm.valid"
+   [title]="customerForm.valid?
+   'Save the form data':'Please validate the form'" >              
+                  Save
+                </button>
+               
+                  <button (click)="getDataOfForm()"
+                   class="btn btn-default">
+                    Test
+                  </button>
+               
+              </div>
+  
+    </form>
+  </div>
+  <br>Dirty :{{customerForm.dirty}}
+  <br>Touched :{{customerForm.touched}}
+  <br>Valid :{{customerForm.valid}}
+  <br>Value :{{customerForm.value|json}}
+  
